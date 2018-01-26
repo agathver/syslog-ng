@@ -420,8 +420,7 @@ log_expr_node_conditional_set_false_branch_of_the_last_if(LogExprNode *condition
 }
 
 LogExprNode *
-log_expr_node_new_conditional(LogExprNode *filter_pipe, LogExprNode *true_expr, LogExprNode *false_expr,
-                              YYLTYPE *yylloc)
+log_expr_node_new_conditional(LogExprNode *filter_pipe, LogExprNode *true_expr, YYLTYPE *yylloc)
 {
   LogExprNode *filter_node = log_expr_node_new_filter(NULL, filter_pipe, NULL);
   LogExprNode *true_branch = log_expr_node_new_log(
@@ -430,7 +429,7 @@ log_expr_node_new_conditional(LogExprNode *filter_pipe, LogExprNode *true_expr, 
                                NULL
                              );
   LogExprNode *false_branch = log_expr_node_new_log(
-                                false_expr,
+                                NULL,
                                 log_expr_node_lookup_flag("final"),
                                 NULL
                               );

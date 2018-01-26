@@ -760,13 +760,13 @@ log_conditional
 log_if
         : KW_IF '(' filter_content ')' '{' log_content '}'
           {
-            $$ = log_expr_node_new_conditional($3, $6, NULL, &@$);
+            $$ = log_expr_node_new_conditional($3, $6, &@$);
           }
         | log_if KW_ELIF '(' filter_content ')' '{' log_content '}'
           {
             LogExprNode *false_branch;
 
-            false_branch = log_expr_node_new_conditional($4, $7, NULL, &@$);
+            false_branch = log_expr_node_new_conditional($4, $7, &@$);
             log_expr_node_conditional_set_false_branch_of_the_last_if($1, false_branch);
             $$ = $1;
           }
